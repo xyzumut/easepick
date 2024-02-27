@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>https://easepick.com/guide/</title>
+</head>
+<body>
+
+    <input type="datetime" id="datepicker" style="display:none;"/>
+
+
+    <script src="./script.js"></script>
+    <script>
+        const picker = new easepick.create({
+            element: "#datepicker",
+            css: [ './style.css' /*"https://cdn.jsdelivr.net/npm/@easepick/bundle@1.2.1/dist/index.css"*/ ],
+            zIndex: 1,
+            readonly: false,
+            inline: true,
+            lang:'tr',
+            header: "Headerda yazılacak text",
+            // autoApply: false,
+            LockPlugin: {
+                minDate: "2024-02-26T00:00:00.000Z",
+            },
+            plugins: [ "LockPlugin" ],
+            setup(picker) {
+                picker.on('select', (e) => {
+                    console.log(new Date(e.detail.date))
+                });
+            },
+        })
+
+    </script>
+</body>
+</html>
